@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Singapore Planning Marker</title>
+
+<link rel="stylesheet" href="api.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      .map {
+        height: 425px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+
+<body>
+  
+ 
+  
+	
+<div class="container">
+  <h2>Holiday Itinerary Planner</h2>
+   </div>
+  <br>
+  <!-- Nav tabs -->
+  <nav class="navbar navbar-expand-md bg-light navbar-dark">
+  
+      <button class="navbar-toggler bg-info" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>     
+ 
+  
+  
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <ul class="nav nav-tabs" role="tablist" id="navbar">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Accomodation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">Things To Do</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu2">Where To Eat</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu3">Saved Itinerary</a>
+    </li>
+  </ul>
+  </div>
+</nav>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+      <h3>Hotels & Hostels</h3>
+      <p>Discover some of the best hotels or hostels depending on your budget to get the most out of your stay. Do consider the hotel's proximity to your desired attractions around the island when planning your stay.</p>
+          
+          <div class="map" id="map1">
+            
+         
+          </div>
+          
+            
+            <script>
+            
+            
+      var map1, map2, map3;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map1'), {
+          center: {lat: 1.3521, lng: 103.8198},
+          zoom:11
+        });
+    
+         map2 = new google.maps.Map(document.getElementById('map2'), {
+          center: {lat: 1.3521, lng: 103.8198},
+          zoom:11
+        });
+         map3 = new google.maps.Map(document.getElementById('map3'), {
+          center: {lat: 1.3521, lng: 103.8198},
+          zoom:11
+        });
+      }
+      
+      /*global google*/
+      /*global map*/
+       var marker = new google.maps.Marker({
+           position: {lat: 1.3521, lng: 103.8198},
+          map: map,
+          title: 'Hello World!'
+          
+        });
+             
+      /*global google*/
+       var marker2 = new google.maps.Marker({
+           position: {lat: 1.3521, lng: 103.8198},
+          map: map2,
+          title: 'Hello World!'
+        });
+        
+        /*global google*/
+       var marker3 = new google.maps.Marker({
+           position: {lat: 1.3521, lng: 103.8198},
+          map: map3,
+          title: 'Hello World!'
+        });
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJBNSNsfhHPO3wrJ0M0oQwSBdNsmOagLw&callback=initMap"
+    async defer></script>
+    
+    <!--https://data.gov.sg/api/action/datastore_search-->
+   
+                
+    </div>
+    
+    
+    
+    <div id="menu1" class="container tab-pane fade"><br>
+      <h3>Sights & Attractions</h3>
+      <p>Come and see what this island has to offer, with tons of activities and sightseeing in the day, followed by a vibrant nightlife. There is something for everyone  no matter young or old, search the map to start planning your activities for the day.</p>
+   
+    <div class="map" id='map2'></div>
+
+
+    </div>
+    
+    
+    <div id="menu2" class="container tab-pane fade"><br>
+      <h3>Local Food Delights</h3>
+      <p>Try our local delicacies found in the hustle and bustle of food markets and hawker centres, where the rich flavors and aromas fill the atmosphere at unbelievably cheap prices. Guaranteed not to disappoint especially if your a food lover, with a melting pot of food cultures all over asia, come experience what it means when we say we live to eat.</p>
+ 
+  <div class="map" id='map3'></div>
+       <iframe width="600" height="400" src="https://data.gov.sg/dataset/list-of-government-markets-hawker-centres/resource/8f6bba57-19fc-4f36-8dcf-c0bda382364d/view/1be4b2d5-9312-40ef-a654-e711e94d1967" frameBorder="0"> </iframe>
+
+   </div>
+    
+    <div id="menu3" class="container tab-pane fade"><br>
+      <div id="hotel">
+        
+      <h4>Hotels & Hostels</h4>
+ 
+      </div>
+      
+      <div id="hotel">
+      <h4>Sights & Attractions</h4>
+     
+      </div>
+      
+      <div id="hotel">
+      <h4>Local Food Delights</h4>
+      
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>
