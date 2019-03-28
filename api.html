@@ -17,7 +17,31 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-      <style>
+       <script>
+    /* global $ */
+    $(function(){
+         $('#map1').click(function(){
+
+            $.get('https://tih-api.stb.gov.sg/media/v1/accommodation/types?apikey=C3Y98iqWJocCYBLHss6uTi2O8OBDicOS', function(response, error){
+                //  console.log(response);
+                let forecasts = response.items[0].forecasts;
+                for (let i=0; i < forecasts.length; i++)
+                {
+                    $('#weather-report').append(`
+                        <tr>
+                            <td>${forecasts[i].address}</td>
+                            <td>${forecasts[i].owner}</td>
+                        </tr>
+                    `);
+                }
+                
+                
+            })
+        })     
+    });
+       
+    </script>
+    <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       .map {
@@ -80,15 +104,27 @@
           
             
             <script>
-            
-            
       var map1, map2, map3;
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map1'), {
+        map1 = new google.maps.Map(document.getElementById('map1'), {
           center: {lat: 1.3521, lng: 103.8198},
           zoom:11
         });
-    
+    //       var script = document.createElement('script');
+    //     // This example uses a local copy of the GeoJSON stored at
+    //     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+    //     script.src = 'https://tih-api.stb.gov.sg/media/v1/accommodation/types';
+    //     document.getElementsByTagName('head')[0].appendChild(script);
+    //   }
+    // window.eqfeed_callback = function(results) {
+    //     for (var i = 0; i < results.features.length; i++) {
+    //       var coords = results.features[i].geometry.coordinates;
+    //       var latLng = new google.maps.LatLng(coords[1],coords[0]);
+    //       var marker = new google.maps.Marker({
+    //         position: latLng,
+    //         map: map
+    //       });
+          
          map2 = new google.maps.Map(document.getElementById('map2'), {
           center: {lat: 1.3521, lng: 103.8198},
           zoom:11
@@ -97,13 +133,32 @@
           center: {lat: 1.3521, lng: 103.8198},
           zoom:11
         });
+        
+  // /* global $ */
+  //   $(function(){
+  //       let map3 = null;
+  //       let forecasts = [];
+  //           $.get('https://data.gov.sg/api/action/datastore_search?resource_id=8f6bba57-19fc-4f36-8dcf-c0bda382364d&limit=5', function(response, error){
+  //               //  console.log(response);
+  //               let areas = response.area_address;
+                
+  //               for (let i=0; i < areas.length; i++)
+  //               {
+  //                   // create a position that matches Google Map expected format
+  //                   let position =  { 
+  //                         'lat': areas[i].label_location.latitude,
+  //                         'lng': areas[i].label_location.longitude        
+  //                   };
+  //                   addMarker(position, map, areas[i].name);
+  //               }
+                
       }
       
       /*global google*/
       /*global map*/
        var marker = new google.maps.Marker({
            position: {lat: 1.3521, lng: 103.8198},
-          map: map,
+          map: map1,
           title: 'Hello World!'
           
         });
@@ -122,10 +177,12 @@
           title: 'Hello World!'
         });
     </script>
+    
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJBNSNsfhHPO3wrJ0M0oQwSBdNsmOagLw&callback=initMap"
     async defer></script>
     
-    <!--https://data.gov.sg/api/action/datastore_search-->
+    
    
                 
     </div>
