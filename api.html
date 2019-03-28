@@ -8,37 +8,17 @@
 <title>Singapore Planning Marker</title>
 
 <link rel="stylesheet" href="api.css">
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>-->
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>-->
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>-->
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>-->
+<!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
        <script>
-    /* global $ */
-    $(function(){
-         $('#map1').click(function(){
-
-            $.get('https://tih-api.stb.gov.sg/media/v1/accommodation/types?apikey=C3Y98iqWJocCYBLHss6uTi2O8OBDicOS', function(response, error){
-                //  console.log(response);
-                let forecasts = response.items[0].forecasts;
-                for (let i=0; i < forecasts.length; i++)
-                {
-                    $('#weather-report').append(`
-                        <tr>
-                            <td>${forecasts[i].address}</td>
-                            <td>${forecasts[i].owner}</td>
-                        </tr>
-                    `);
-                }
-                
-                
-            })
-        })     
-    });
+    
        
     </script>
     <style>
@@ -47,7 +27,7 @@
       .map {
         height: 425px;
       }
-      /* Optional: Makes the sample page fill the window. */
+     
       html, body {
         height: 100%;
         margin: 0;
@@ -99,6 +79,7 @@
           
           <div class="map" id="map1">
             
+            
          
           </div>
           
@@ -110,37 +91,15 @@
           center: {lat: 1.3521, lng: 103.8198},
           zoom:11
         });
-    //       var script = document.createElement('script');
-    //     // This example uses a local copy of the GeoJSON stored at
-    //     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-    //     script.src = 'https://tih-api.stb.gov.sg/media/v1/accommodation/types';
-    //     document.getElementsByTagName('head')[0].appendChild(script);
-    //   }
-    // window.eqfeed_callback = function(results) {
-    //     for (var i = 0; i < results.features.length; i++) {
-    //       var coords = results.features[i].geometry.coordinates;
-    //       var latLng = new google.maps.LatLng(coords[1],coords[0]);
-    //       var marker = new google.maps.Marker({
-    //         position: latLng,
-    //         map: map
-    //       });
-          
-         map2 = new google.maps.Map(document.getElementById('map2'), {
-          center: {lat: 1.3521, lng: 103.8198},
-          zoom:11
-        });
-         map3 = new google.maps.Map(document.getElementById('map3'), {
-          center: {lat: 1.3521, lng: 103.8198},
-          zoom:11
-        });
-        
   // /* global $ */
   //   $(function(){
-  //       let map3 = null;
+  //       let map = null;
   //       let forecasts = [];
-  //           $.get('https://data.gov.sg/api/action/datastore_search?resource_id=8f6bba57-19fc-4f36-8dcf-c0bda382364d&limit=5', function(response, error){
+  //       $(function(){
+
+  //           $.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', function(response, error){
   //               //  console.log(response);
-  //               let areas = response.area_address;
+  //               let areas = response.area_metadata;
                 
   //               for (let i=0; i < areas.length; i++)
   //               {
@@ -151,6 +110,24 @@
   //                   };
   //                   addMarker(position, map, areas[i].name);
   //               }
+                
+              
+
+                
+                
+  //           })
+  //       })     
+    
+ 
+         map2 = new google.maps.Map(document.getElementById('map2'), {
+          center: {lat: 1.3521, lng: 103.8198},
+          zoom:11
+        });
+         map3 = new google.maps.Map(document.getElementById('map3'), {
+          center: {lat: 1.3521, lng: 103.8198},
+          zoom:11
+        });
+        
                 
       }
       
@@ -178,7 +155,9 @@
         });
     </script>
     
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJBNSNsfhHPO3wrJ0M0oQwSBdNsmOagLw&callback=initMap"
     async defer></script>
     

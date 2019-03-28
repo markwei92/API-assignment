@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+        <script>
+        
+        /* global $*/
+          $(function(){
+             $.get('https://tih-api.stb.gov.sg/media/v1/accommodation/types?apikey=C3Y98iqWJocCYBLHss6uTi2O8OBDicOS',
+                function(data){
+                    console.log(data);
+                })
+        })  
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
