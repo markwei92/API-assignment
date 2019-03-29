@@ -18,12 +18,11 @@
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
 <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
        <script>
-    
+
        
     </script>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+    
       .map {
         height: 425px;
       }
@@ -38,7 +37,7 @@
 
 <body>
   
- 
+    
   
 	
 <div class="container">
@@ -83,50 +82,45 @@
          
           </div>
           
-            
-            <script>
-      var map1, map2, map3;
-      function initMap() {
-        map1 = new google.maps.Map(document.getElementById('map1'), {
-          center: {lat: 1.3521, lng: 103.8198},
-          zoom:11
-        });
-  // /* global $ */
-  //   $(function(){
-  //       let map = null;
-  //       let forecasts = [];
-  //       $(function(){
-
-  //           $.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', function(response, error){
-  //               //  console.log(response);
-  //               let areas = response.area_metadata;
-                
-  //               for (let i=0; i < areas.length; i++)
-  //               {
-  //                   // create a position that matches Google Map expected format
-  //                   let position =  { 
-  //                         'lat': areas[i].label_location.latitude,
-  //                         'lng': areas[i].label_location.longitude        
-  //                   };
-  //                   addMarker(position, map, areas[i].name);
-  //               }
-                
-              
-
-                
-                
-  //           })
-  //       })     
+             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJBNSNsfhHPO3wrJ0M0oQwSBdNsmOagLw&callback=initMap"
+    async defer></script>
     
- 
-         map2 = new google.maps.Map(document.getElementById('map2'), {
+    <script>
+    
+        /* global $ */
+    $(function(){
+        let map1 = null;
+        let forecasts = [];
+         $(function(){
+
+            $.get('https://api.data.gov.sg/v1/environment/2-hour-weather-forecast', function(response, error){
+                //  console.log(response);
+                let areas = response.area_metadata;
+                
+                for (let i=0; i < areas.length; i++)
+                {
+                    // create a position that matches Google Map expected format
+                    let position =  { 
+                           'lat': areas[i].label_location.latitude,
+                           'lng': areas[i].label_location.longitude        
+                     };
+                    addMarker(position, map, areas[i].name);
+                }
+              
+            })
+        })    
+    
+      var map1;
+      function initMap() {
+        m1 = new google.maps.Map(document.getElementById('map1'), {
           center: {lat: 1.3521, lng: 103.8198},
-          zoom:11
+          zoom:12
         });
-         map3 = new google.maps.Map(document.getElementById('map3'), {
-          center: {lat: 1.3521, lng: 103.8198},
-          zoom:11
-        });
+      
+
         
                 
       }
@@ -139,30 +133,17 @@
           title: 'Hello World!'
           
         });
-             
-      /*global google*/
-       var marker2 = new google.maps.Marker({
-           position: {lat: 1.3521, lng: 103.8198},
-          map: map2,
-          title: 'Hello World!'
-        });
+
+              /* global google*/ 
+              /*global initiMap*/
+      google.maps.event.addDomListener(window, 'load', initiMap);
+
         
-        /*global google*/
-       var marker3 = new google.maps.Marker({
-           position: {lat: 1.3521, lng: 103.8198},
-          map: map3,
-          title: 'Hello World!'
-        });
+    });
+  
     </script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJBNSNsfhHPO3wrJ0M0oQwSBdNsmOagLw&callback=initMap"
-    async defer></script>
-    
-    
-   
+
+
                 
     </div>
     
