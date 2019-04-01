@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <!-- Original source: https://developers.google.com/maps/documentation/javascript/examples/place-search -->
+    <head>
+        <!-- STEP 7: Create a style for the map so that it has height and width -->
+        <style>
+            #map {
+                height: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!-- STEP 6: Create a div to hold the google map -->
+        <div id='map'></div>
+        
+        <script>
+        // STEP 5: Create an empty map variable
+        let map = null;
+        
+        // STEP 10
+        // Create an empty service variable in the global scope
+        // so the entire world can access it.
+        let service = null;
+        
+        // function defintion doesn't mean the code inside it will run
+        // STEP 2: Create the initMap function
+        function initMap()
+        {
+
+            // STEP 3: Create the google coordinate
+            let sydney = new google.maps.LatLng(-33.867, 151.195);
+            
+            // STEP 4: Create the google map
+            map = new google.maps.Map(
+                document.getElementById('map'), {center: sydney, zoom: 15});
+            
+           
+           // STEP 8: Create a request for the place API
+            var request = {
+                // query = is what we type into the 'search engine'
+                query: 'Cold Storage in Singapore',
+                // fields = what results we want back from google search
+                fields: ['name', 'geometry'],
+            };
+
+            // STEP 9: Create the search service
+            // The input to search service is the google map
+             service = new google.maps.places.PlacesService(map);
+
+
+            // STEP 11: Do the search
+            // Explanation:: Use the findPlaceFromQuery API call
+            // to search for what we want.
+            // Give a callback function; the first paramater/argument sent to
+            // the callback function will be the result, and the second
+            // parameter/argument sent to the callback function will be the status
+                service.findPlaceFromQuery(request, function(results, status) {
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                      createMarker(results[i]);
+                    }
+        
+                    map.setCenter(results[0].geometry.location);
+                  }
+                });
+                
+           
+        }
+        // END STEP 2 
+        
+        // STEP 12: Declare the createMarker function
+         function createMarker(result)
+        {
+            // STEP 13: Actually create the marker
+            var marker = new google.maps.Marker({
+              map: map,
+              position: result.geometry.location
+            });
+
+        }
+        // END STEP 12
+        </script>
+        
+        
+        <!-- STEP 1: Include the google map library -->
+        <!-- When the google map library has been included, it will call the initMap function -->
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmOu48oQBmMBEcEnofwdPKiVGKvji0zD4&libraries=places&callback=initMap" async defer></script>
+        <!-- END STEP 1 -->
+    </body>
+</html>
