@@ -67,7 +67,10 @@
         <br>
       <h3>Hotels</h3>
       <p id="p">Discover some of the best hotels or hostels depending on your budget to get the most out of your stay. Do consider the hotel's proximity to your desired attractions around the island when planning your stay.</p>
-       <a class='btn btn-warning' id='hotel'>Generate Hotels</a>
+       <!--<input type="button" value="button1" id="button1">-->
+       <!--<li class="active"><a id="button1" href="#office" data-toggle="tab">Tab 1</a>-->
+       <!--<button onclick="myFunction()">Click me</button>-->
+       <a class='btn btn-warning' id='button1'>Generate Hotels</a>
       <br/>
       <br/>
       <br/>
@@ -76,7 +79,8 @@
           <br/>
        <h3>Sights & Attractions</h3>
       <p>Come and see what this island has to offer, with tons of activities and sightseeing in the day, followed by a vibrant nightlife. There is something for everyone  no matter young or old, search the map to start planning your activities for the day.</p>
-       <a class='btn btn-danger' id='hotel'>Generate Places To Visit</a>
+       <!--<input type="button" value="button2" id="button2">-->
+       <a class='btn btn-danger' id='button2'>Generate Places To Visit</a>
     <br/>
     <br/>
     <br/>
@@ -85,7 +89,7 @@
         <br/>
      <h3>Local Food Delights</h3>
       <p>Try our local delicacies found in the hustle and bustle of food markets and hawker centres, where the rich flavors and aromas fill the atmosphere at unbelievably cheap prices. Guaranteed not to disappoint especially if your a food lover, with a melting pot of food cultures all over asia, come experience what it means when we say we live to eat.</p>
-        <a class='btn btn-info' id='hotel'>Generate Eating Places</a>
+        <a class='btn btn-info' id='button3'>Generate Eating Places</a>
         <br/>
         <br/>
         </div>
@@ -118,18 +122,24 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmOu48oQBmMBEcEnofwdPKiVGKvji0zD4&libraries=places&callback=initMap" async defer></script>
 
     <script>
-    
+      
      /* global $ */
     /*global google*/
-   
+    /* global initialize */
+    /* global infowindow */
+    /* global marker */
+
         var map;
         var infoWindow;
         
         var request;
+        var request1;
+        var request2;
         var service;
         var markers = [];
         
-        
+        google.maps.event.addDomListener(window, 'load', initialize);
+    
         function initMap() {
         let singapore = { lat: 1.35, lng: 103.8};
         map = new google.maps.Map(document.getElementById('map'), {
@@ -137,14 +147,72 @@
           center: singapore,
         });
   
-
-        
-        request = {
+        function hotel(){
+        infowindow.open(map,marker);
+        }
+        $('#button1').click(function(load){
+        // google.maps.event.addDomListener(document.getElementById('button1'),
+        //     'click',
+            request = {
             location: singapore,
             radius: 8047,
             types: ['hotel']
-        };
+            }
+            
+            clearResults(markers)
+            
+            
+            service.nearbySearch(request, callback);
+            
+            });
+
+
+
+        // function restaurant(){
+        // infowindow.open(map,marker);
+        // }
+
+        // $('#button3').click(function(load){
+        // request1 = {
+        // location: singapore,
+        // radius: 8047,
+        // types: ['restaurant']
+        // }
         
+        // clearResults(markers)
+            
+            
+        // service.nearbySearch(request1, callback);
+        // });
+
+        // function museum(){
+        // infowindow.open(map,marker);
+        // }
+
+        $('#button2').click(function(load){
+                request2 = {
+                location: singapore,
+                radius: 8047,
+                types: ['bank']
+                }
+                clearResults(markers)
+            
+            
+        service.nearbySearch(request2, callback);
+        
+        });
+            //     );
+        
+        //         request4 = {
+        //     location: singapore,
+        //     radius: 8047,
+        //     types: ['night_club']
+        // };
+        //         request5 = {
+        //     location: singapore,
+        //     radius: 8047,
+        //     types: ['shopping_mall']
+        // };
         
         
         infoWindow = new google.maps.InfoWindow();
@@ -157,21 +225,99 @@
          
             
         /*global clearResults*/
+        // function hotel1(){
+        // infowindow.open(map,marker);
+        // }
+        // $('#button1').click(function(load){
+        
         google.maps.event.addListener(map, 'rightclick', function(event) {
             console.log(event);
             map.setCenter(event.latLng);
             clearResults(markers);
-            
+
             var request = {
                 location: event.latLng,
                 radius: 8047, 
                 types: ['hotel'],
+                fields: ['basic']
+            };
+                service.nearbySearch(request, callback);
+            
+        })
+        
+            var request2 = {
+                location: event.latLng,
+                radius: 8047, 
+                types: ['bank'],
                 
                 fields: ['basic']
             };
-            service.nearbySearch(request, callback);
+            service.nearbySearch(request2, callback);
+                
             
-        })
+            
+        // google.maps.event.addListener(map, 'rightclick', function(event) {
+        //     console.log(event);
+        //     map.setCenter(event.latLng);
+        //     clearResults(markers);     
+        //     var request1 = {
+        //         location: event.latLng,
+        //         radius: 8047, 
+        //         types: ['museum'],
+                
+        //         fields: ['basic']
+        //     };
+        //     service.nearbySearch(request1, callback);
+            
+        // })
+            
+        // google.maps.event.addListener(map, 'rightclick', function(event) {
+        //     console.log(event);
+        //     map.setCenter(event.latLng);
+        //     clearResults(markers);     
+        //     var request2 = {
+        //         location: event.latLng,
+        //         radius: 8047, 
+        //         types: ['museum'],
+                
+        //         fields: ['basic']
+        //     };
+        //     service.nearbySearch(request2, callback);
+            
+        // })
+            //     var request2 = {
+            //     location: event.latLng,
+            //     radius: 8047, 
+            //     types: ['cafe'],
+                
+            //     fields: ['basic']
+            // };
+            
+            //     var request3 = {
+            //     location: event.latLng,
+            //     radius: 8047, 
+            //     types: ['museum'],
+                
+            //     fields: ['basic']
+            // };
+            
+            //     var request4 = {
+            //     location: event.latLng,
+            //     radius: 8047, 
+            //     types: ['night_club'],
+                
+            //     fields: ['basic']
+            // };
+            
+            //     var request5 = {
+            //     location: event.latLng,
+            //     radius: 8047, 
+            //     types: ['shopping_mall'],
+                
+            //     fields: ['basic']
+            // };
+            
+
             
     
         function callback(results, status) {
@@ -195,13 +341,8 @@
             google.maps.event.addListener(marker, 'click', function() {
                 // use the details service here
                 console.log(place);
-          
-        //   service.getDetails(request, function(place, status) {
-        //   if (place.rating === undefined) {
-        //     var marker = new google.maps.Marker({
-        //       map: map,
-        //       position: place.geometry.location
-        //     });
+
+        // Display on click of marker
         
             let display = {};
             display.name = place.name;
@@ -212,12 +353,17 @@
             }
             
             if (place.photos === undefined) {
-                display.photo = '';
+                display.photo = 'No Available';
                 
             } else {
                 display.photo = place.photos[0].getUrl()
             }
             
+            if (place.price_level === undefined) {
+                display.price_level = 'No Available Pricing';
+            } else{
+                display.price_level = place.price_level;
+            }
            
               let content = `<h3>${display.name}</h3>
                     <p><img id="img" src="${display.photo}"></p>
@@ -249,9 +395,12 @@
                 
                       }
          }
-         
-  
-         </script>  
+   
+
+        // }
+    // Javascript button functionality
+
+    </script>  
     
         
     
