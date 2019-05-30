@@ -137,6 +137,7 @@
         var request2;
         var service;
         var markers = [];
+        var currentSelectedMode;
         
         google.maps.event.addDomListener(window, 'load', initialize);
     
@@ -160,8 +161,8 @@
             }
             
             clearResults(markers)
-            
-            
+      
+            currentSelectedMode = 'hotel';
             service.nearbySearch(request, callback);
             
             });
@@ -197,7 +198,7 @@
                 }
                 clearResults(markers)
             
-            
+          currentSelectedMode = 'bank';  
         service.nearbySearch(request2, callback);
         
         });
@@ -235,6 +236,7 @@
             map.setCenter(event.latLng);
             clearResults(markers);
 
+        if (currentSelectedMode == 'hotel') {
             var request = {
                 location: event.latLng,
                 radius: 8047, 
@@ -242,17 +244,20 @@
                 fields: ['basic']
             };
                 service.nearbySearch(request, callback);
+        }
             
-        })
-        
+        if (currentSelectedMode == 'bank') {  
             var request2 = {
                 location: event.latLng,
                 radius: 8047, 
                 types: ['bank'],
-                
                 fields: ['basic']
             };
             service.nearbySearch(request2, callback);
+        }
+        })
+        
+
                 
             
             
