@@ -26,22 +26,32 @@
       #para {
           color: red;
           font-size: 13px;
+          padding-left: 10px;
       }
       
 
       #hotels{
-           text-align: center;
+          text-align: center;
           background-color: rgba(250, 220, 122, 1);
+          background-image: url("https://singapore.concordehotelsresorts.com/wp-content/uploads/2018/03/Concorde-Hotel-Singapore-Standard-Room.jpg");
+          background-repeat: no-repeat;
+          background-size: cover;
       }
       
       #sights{
            text-align: center;
           background-color: rgba(251, 147, 147, 1);
+          background-image: url("https://www.furama.com/images/FCC-Homepage.jpg");
+        background-repeat: no-repeat;
+          background-size: cover;
       }
       
       #food{
            text-align: center;
          background-color: rgba(147, 228, 251, 1);
+         background-image: url("https://d22ir9aoo7cbf6.cloudfront.net/wp-content/uploads/sites/2/2017/05/Straits-cafe-halal-buffet.jpg");
+          background-repeat: no-repeat;
+          background-size: cover;
       }
       
       #header{
@@ -50,6 +60,15 @@
           color: white;
           font-family: sans-serif;
       }
+      
+      #textbox{
+    color: white;
+    text-align:center;
+    background-color:rgba(0,0,0, 0.5);
+    padding:20px;
+    margin:20px;
+      }
+      
     </style>
     <title>Hello, world!</title>
   </head>
@@ -65,44 +84,60 @@
     <div>
         <div id="hotels">
         <br>
-      <h3>Hotels</h3>
+        <div id="textbox">
+      <h3>Accommodations</h3>
       <p id="p">Discover some of the best hotels or hostels depending on your budget to get the most out of your stay. Do consider the hotel's proximity to your desired attractions around the island when planning your stay.</p>
        <!--<input type="button" value="button1" id="button1">-->
        <!--<li class="active"><a id="button1" href="#office" data-toggle="tab">Tab 1</a>-->
        <!--<button onclick="myFunction()">Click me</button>-->
-       <a class='btn btn-warning' id='button1'>Generate Hotels</a>
+       <a class='btn btn-warning' id='button1'><span style='color: white; font-weight: bold;'>Find a place to stay</span></a>
+      </div>
       <br/>
       <br/>
       <br/>
       </div>
       <div id="sights">
           <br/>
+        <div id="textbox">
        <h3>Sights & Attractions</h3>
-      <p>Come and see what this island has to offer, with tons of activities and sightseeing in the day, followed by a vibrant nightlife. There is something for everyone  no matter young or old, search the map to start planning your activities for the day.</p>
+      <p>Come and see what this island has to offer, with tons of activities and sightseeing to do. There is something for everyone  no matter young or old, search the map to start planning your activities for the day.</p>
        <!--<input type="button" value="button2" id="button2">-->
-       <a class='btn btn-danger' id='button2'>Generate Places To Visit</a>
+       <a class='btn btn-danger' id='button2a' style="margin: 10px; padding: 5px 27px 5px 27px; font-weight: bold;"><span style='color: white;'>Parks</span></a>
+   <a class='btn btn-danger' id='button2b'><span style='color: white; font-weight: bold;'>Museums</span></a>
+       <a class='btn btn-danger' id='button2c' style="margin: 10px; padding: 5px 27px 5px 27px; font-weight: bold;"><span style='color: white;'>Malls</span></a>
+        </div>
     <br/>
     <br/>
     <br/>
     </div>
     <div id="food">
         <br/>
+        <div id="textbox">
      <h3>Local Food Delights</h3>
-      <p>Try our local delicacies found in the hustle and bustle of food markets and hawker centres, where the rich flavors and aromas fill the atmosphere at unbelievably cheap prices. Guaranteed not to disappoint especially if your a food lover, with a melting pot of food cultures all over asia, come experience what it means when we say we live to eat.</p>
-        <a class='btn btn-info' id='button3'>Generate Eating Places</a>
+      <p>Try our local delicacies found in the hustle and bustle of food markets, restaurants and other eateries, where the rich flavors and aromas fill the atmosphere filled with mouthwatering goodness. Guaranteed not to disappoint especially if your a food lover, with a melting pot of food cultures all over asia, come experience what it means when we say we live to eat.</p>
+        <a class='btn btn-info' id='button3a' style="margin: 10px; padding: 5px 35px 5px 35px; font-weight: bold;"><span style='color: white;'>Cafes</span></a>
+        <a class='btn btn-info' id='button3b'><span style='color: white; font-weight: bold;'>Restaurants</span></a>
+        </div>
+        <br/>
         <br/>
         <br/>
         </div>
         <br/>
-      <p id="para">*Kindly use the right click function to populate your target areas as Google maps only allow displays of up to 20 results for any given target area.</p>
-       
+        <h6 id="para">Disclaimer</h6>
+      <p id="para">Kindly refresh web app if google maps does not show on screen.<br/>Due to google maps marker display limit of 20, kindly right click on the map to populate search result markers on other desired areas.</p>
+       <div class="border" style="margin: 0px 300px 0px 300px;">
+       <p id="display_filter" style="text-align: center; color: teal; font-weight: bold; font-size: 20px; padding-top: 20px;"></p>
+      </div>
+        <br/>
+<!--<button onclick="getElementById('demo').innerHTML=Date()">What is the time?</button>-->
+
        <div id='map'></div>
 
    </div>
    
-       <div id="menu1" class="container tab-pane fade"><br>
-      <h3>Sights & Attractions</h3>
-      <p>Come and see what this island has to offer, with tons of activities and sightseeing in the day, followed by a vibrant nightlife. There is something for everyone  no matter young or old, search the map to start planning your activities for the day.</p>
+    <!--   <div id="menu1" class="container tab-pane fade"><br>-->
+    <!--  <h3>Sights & Attractions</h3>-->
+    <!--  <p>Come and see what this island has to offer, with tons of activities and sightseeing to do. There is something for everyone  no matter young or old, search the map to start planning your activities for the day.</p>-->
    
   
     
@@ -110,9 +145,9 @@
  
  
     
-    <div id="menu3" class="container tab-pane fade"><br>
-     <p>hello</p>
-      </div>
+    <!--<div id="menu3" class="container tab-pane fade"><br>-->
+    <!-- <p>hello</p>-->
+    <!--  </div>-->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" ></script>
@@ -152,12 +187,12 @@
         infowindow.open(map,marker);
         }
         $('#button1').click(function(load){
-        // google.maps.event.addDomListener(document.getElementById('button1'),
-        //     'click',
+
+        document.getElementById('display_filter').innerHTML= "Now Showing: Acommodation",
             request = {
             location: singapore,
             radius: 8047,
-            types: ['hotel']
+            types: ['lodging']
             }
             
             clearResults(markers)
@@ -165,55 +200,79 @@
             currentSelectedMode = 'hotel';
             service.nearbySearch(request, callback);
             
+
             });
 
-
-
-        // function restaurant(){
-        // infowindow.open(map,marker);
-        // }
-
-        // $('#button3').click(function(load){
-        // request1 = {
-        // location: singapore,
-        // radius: 8047,
-        // types: ['restaurant']
-        // }
-        
-        // clearResults(markers)
-            
-            
-        // service.nearbySearch(request1, callback);
-        // });
-
-        // function museum(){
-        // infowindow.open(map,marker);
-        // }
-
-        $('#button2').click(function(load){
-                request2 = {
+        $('#button2a').click(function(load){
+            document.getElementById('display_filter').innerHTML= "Now Showing: Parks",
+                request2a = {
                 location: singapore,
                 radius: 8047,
-                types: ['bank']
+                types: ['park']
                 }
                 clearResults(markers)
             
-          currentSelectedMode = 'bank';  
-        service.nearbySearch(request2, callback);
+          currentSelectedMode = 'park';  
+        service.nearbySearch(request2a, callback);
+        
+        });
+        
+                $('#button2b').click(function(load){
+                document.getElementById('display_filter').innerHTML= "Now Showing: Museums",
+                request2b = {
+                location: singapore,
+                radius: 8047,
+                types: ['museum']
+                }
+                clearResults(markers)
+            
+          currentSelectedMode = 'museum';  
+        service.nearbySearch(request2b, callback);
+        
+        });
+        
+                $('#button2c').click(function(load){
+                document.getElementById('display_filter').innerHTML= "Now Showing: Malls",
+                request2c = {
+                location: singapore,
+                radius: 8047,
+                types: ['shopping_mall']
+                }
+                clearResults(markers)
+            
+          currentSelectedMode = 'mall';  
+        service.nearbySearch(request2c, callback);
+        
+        });
+        
+            $('#button3a').click(function(load){
+                document.getElementById('display_filter').innerHTML= "Now Showing: Cafes",
+                request3a = {
+                location: singapore,
+                radius: 8047,
+                types: ['cafe']
+                }
+                clearResults(markers)
+            
+          currentSelectedMode = 'cafe';  
+        service.nearbySearch(request3a, callback);
+        
+        });
+        
+            $('#button3b').click(function(load){
+                document.getElementById('display_filter').innerHTML= "Now Showing: Restaurants",
+                request3b = {
+                location: singapore,
+                radius: 8047,
+                types: ['restaurant']
+                }
+                clearResults(markers)
+            
+          currentSelectedMode = 'restaurant';  
+        service.nearbySearch(request3b, callback);
         
         });
             //     );
-        
-        //         request4 = {
-        //     location: singapore,
-        //     radius: 8047,
-        //     types: ['night_club']
-        // };
-        //         request5 = {
-        //     location: singapore,
-        //     radius: 8047,
-        //     types: ['shopping_mall']
-        // };
         
         
         infoWindow = new google.maps.InfoWindow();
@@ -223,13 +282,6 @@
         service.nearbySearch(request, callback);
         
          
-         
-            
-        /*global clearResults*/
-        // function hotel1(){
-        // infowindow.open(map,marker);
-        // }
-        // $('#button1').click(function(load){
         
         google.maps.event.addListener(map, 'rightclick', function(event) {
             console.log(event);
@@ -240,88 +292,69 @@
             var request = {
                 location: event.latLng,
                 radius: 8047, 
-                types: ['hotel'],
+                types: ['lodging'],
                 fields: ['basic']
             };
                 service.nearbySearch(request, callback);
         }
             
-        if (currentSelectedMode == 'bank') {  
-            var request2 = {
+        if (currentSelectedMode == 'park') {  
+            var request2a = {
                 location: event.latLng,
                 radius: 8047, 
-                types: ['bank'],
+                types: ['park'],
                 fields: ['basic']
             };
-            service.nearbySearch(request2, callback);
+            service.nearbySearch(request2a, callback);
+        }
+      
+        
+                if (currentSelectedMode == 'museum') {  
+            var request2b = {
+                location: event.latLng,
+                radius: 8047, 
+                types: ['museum'],
+                fields: ['basic']
+            };
+            service.nearbySearch(request2b, callback);
+        }
+     
+        
+                if (currentSelectedMode == 'mall') {  
+            var request2c = {
+                location: event.latLng,
+                radius: 8047, 
+                types: ['mall'],
+                fields: ['basic']
+            };
+            service.nearbySearch(request2c, callback);
+        }
+        
+            if (currentSelectedMode == 'cafe') {  
+            var request3a = {
+                location: event.latLng,
+                radius: 8047, 
+                types: ['cafe'],
+                fields: ['basic']
+            };
+            service.nearbySearch(request3a, callback);
+        }
+        
+            if (currentSelectedMode == 'restaurant') {  
+            var request3b = {
+                location: event.latLng,
+                radius: 8047, 
+                types: ['restaurant'],
+                fields: ['basic']
+            };
+            service.nearbySearch(request3b, callback);
         }
         })
-        
 
                 
             
             
-        // google.maps.event.addListener(map, 'rightclick', function(event) {
-        //     console.log(event);
-        //     map.setCenter(event.latLng);
-        //     clearResults(markers);     
-        //     var request1 = {
-        //         location: event.latLng,
-        //         radius: 8047, 
-        //         types: ['museum'],
-                
-        //         fields: ['basic']
-        //     };
-        //     service.nearbySearch(request1, callback);
-            
-        // })
-            
-        // google.maps.event.addListener(map, 'rightclick', function(event) {
-        //     console.log(event);
-        //     map.setCenter(event.latLng);
-        //     clearResults(markers);     
-        //     var request2 = {
-        //         location: event.latLng,
-        //         radius: 8047, 
-        //         types: ['museum'],
-                
-        //         fields: ['basic']
-        //     };
-        //     service.nearbySearch(request2, callback);
-            
-        // })
-            //     var request2 = {
-            //     location: event.latLng,
-            //     radius: 8047, 
-            //     types: ['cafe'],
-                
-            //     fields: ['basic']
-            // };
-            
-            //     var request3 = {
-            //     location: event.latLng,
-            //     radius: 8047, 
-            //     types: ['museum'],
-                
-            //     fields: ['basic']
-            // };
-            
-            //     var request4 = {
-            //     location: event.latLng,
-            //     radius: 8047, 
-            //     types: ['night_club'],
-                
-            //     fields: ['basic']
-            // };
-            
-            //     var request5 = {
-            //     location: event.latLng,
-            //     radius: 8047, 
-            //     types: ['shopping_mall'],
-                
-            //     fields: ['basic']
-            // };
-            
+
 
             
     
@@ -358,7 +391,7 @@
             }
             
             if (place.photos === undefined) {
-                display.photo = 'No Available';
+                display.photo = 'Not Available';
                 
             } else {
                 display.photo = place.photos[0].getUrl()
@@ -369,15 +402,23 @@
             } else{
                 display.price_level = place.price_level;
             }
+            // if (place.opening_hours === false) {
+            //     display.opening_hours = 'Not Open';
+            // } else{
+            //     display.opening_hours = place.opening_hours;
+            // }
+
            
               let content = `<h3>${display.name}</h3>
                     <p><img id="img" src="${display.photo}"></p>
                     <p>Rating: ${display.rating}</p>
                     <p>Price Level: ${display.price_level}</p>`
+ 
+                //  <p>Open Now: ${display.opening_hours.open_now}</p>
                   
                     
-            //   infoWindow.setContent(place.name);
-            //   infoWindow.setContent(place.place_id);
+            infoWindow.setContent(place.name);
+            infoWindow.setContent(place.place_id);
             infoWindow.setContent(content);
                 infoWindow.open(map, this);
           
@@ -400,16 +441,8 @@
                 
                       }
          }
-   
-
-        // }
-    // Javascript button functionality
 
     </script>  
     
-        
-    
- 
-      
   </body>
 </html>
