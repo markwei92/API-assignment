@@ -7,16 +7,19 @@ This project is an all in one app that allows you to find hotels, eateries and s
 The interface is a clean single page interface with multiple categories on top followed by the map at the bottom which displays the markers based on the category chosen by the user.
 
 #Features
+
 The buttons allow you to display information markers around the map, right click on an area to repopulate markers for that area. Due to google API free limitations, the map only allows the
 display of up to 20 at any given time, hence the right click function is necessary to find all possible markers around the island.
 Clicking on the markers will give some details on the landmark such as the title, picture and ratings. Pricing is mainly applicable to eateries and hotels and as such there may not be information for certain
 marker categories.
 
 #Frameworks Used
+
 The project uses JQuery to simplify DOM manipulation and Javasript to define functions and do callbacks to enable the map to respond accordingly based on user action.
 Basic HTML and CSS is used to make the site more visually appealing.
 
 #Testing
+
 I did an LMS example for Jasmine Testing, not entirely sure how to integrate this in the API project, but for this project testing I did them
 manually as there were only a few functions to test, clicking on each button and checking to ensure they refresh and correspond accordingly to the category. The right-click function on google maps was also
 tested similarly, but this time to ensure the right-click corresponds to the category that is being displayed on the map. Do note that if the map fails to display (map is located at the bottom of the page), try to refresh
