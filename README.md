@@ -27,7 +27,7 @@ again (if screen at the bottom is white), if it doesn't work the key might have 
 
 #Deployment
 
-For deployment I used Github to deploy, To run code just extract all the files onto a coding text editor and run the index.html file or use the repo link provided-> https://markwei92.github.io/api-assignment/ 
+For deployment I used Github to deploy, To run code just extract all the files onto a coding text editor and run the index.html file or use the repo link provided-> https://markwei92.github.io/API-assignment/ 
 
 #Credits
 
